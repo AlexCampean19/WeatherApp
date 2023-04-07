@@ -1,0 +1,135 @@
+@import "mixinuri";
+@import "variabile";
+@media (min-width: 320px) {
+    main {
+        background-color: aqua;
+        .container {
+            padding: 20px;
+        }
+        .boxOne {
+            #tempmax {
+                padding-right: 10px;
+            }
+            text-align: center;
+            #cityname {
+                @include tipografie(26px, 600, 32px, $cultexte)
+            }
+            #citytemperature {
+                @include tipografie(54px, 900, 60px, $cultexte);
+                padding: 10px 0;
+            }
+            #status {
+                padding: 10px 0;
+            }
+            #minmax {
+                display: flex;
+                justify-content: center;
+                #tempmin {
+                    padding-right: 5px;
+                }
+            }
+        }
+        .boxTwo {
+            #miniboxone,
+            #miniboxtwo {
+                border-radius: 15px;
+                padding: 10px;
+                background-color: red;
+            }
+            .titlebox {
+                display: inline-block;
+                @include tipografie(16px, 700, 22px, $cultexte);
+                padding-left: 10px;
+            }
+            .cloud {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                &:after {
+                    content: "\f0c2";
+                }
+                span {
+                    display: none;
+                }
+            }
+            #miniboxone {
+                margin-top: 20px;
+                #clock {
+                    border: 0;
+                    color: $cultexte;
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 18px;
+                    font-weight: 900;
+                    position: relative;
+                    &:after {
+                        content: "\f017";
+                    }
+                    span {
+                        display: none;
+                    }
+                }
+                #card1 {
+                    display: flex;
+                    overflow: auto;
+                    white-space: nowrap;
+                    justify-content: space-between;
+                    .boxHour {
+                        text-align: center;
+                        padding: 0 10px;
+                    }
+                }
+                #card1::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+            #miniboxtwo {
+                margin-top: 20px;
+                #date {
+                    border: 0;
+                    color: $cultexte;
+                    font-family: "Font Awesome 5 Free";
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                    font-size: 18px;
+                    font-weight: 900;
+                    position: relative;
+                    &:after {
+                        content: "\f073";
+                    }
+                    span {
+                        display: none;
+                    }
+                }
+                .watherOnDay {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    padding: 10px 0;
+                    p,
+                    i {
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+}

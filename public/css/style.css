@@ -1,0 +1,237 @@
+@media (min-width: 320px) {
+  header {
+    padding: 15px;
+    background-color: black;
+  }
+  header #cityheader,
+  header #tempheader {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 18px;
+    color: #fff;
+  }
+  header #cityheader {
+    padding-right: 10px;
+  }
+}
+@media (min-width: 320px) {
+  main {
+    background-color: aqua;
+  }
+  main .container {
+    padding: 20px;
+  }
+  main .boxOne {
+    text-align: center;
+  }
+  main .boxOne #tempmax {
+    padding-right: 10px;
+  }
+  main .boxOne #cityname {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 32px;
+    color: #fff;
+  }
+  main .boxOne #citytemperature {
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 60px;
+    color: #fff;
+    padding: 10px 0;
+  }
+  main .boxOne #status {
+    padding: 10px 0;
+  }
+  main .boxOne #minmax {
+    display: flex;
+    justify-content: center;
+  }
+  main .boxOne #minmax #tempmin {
+    padding-right: 5px;
+  }
+  main .boxTwo #miniboxone,
+  main .boxTwo #miniboxtwo {
+    border-radius: 15px;
+    padding: 10px;
+    background-color: red;
+  }
+  main .boxTwo .titlebox {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    color: #fff;
+    padding-left: 10px;
+  }
+  main .boxTwo .cloud {
+    border: 0;
+    color: #fff;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+  }
+  main .boxTwo .cloud:after {
+    content: "\f0c2";
+  }
+  main .boxTwo .cloud span {
+    display: none;
+  }
+  main .boxTwo #miniboxone {
+    margin-top: 20px;
+  }
+  main .boxTwo #miniboxone #clock {
+    border: 0;
+    color: #fff;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+  }
+  main .boxTwo #miniboxone #clock:after {
+    content: "\f017";
+  }
+  main .boxTwo #miniboxone #clock span {
+    display: none;
+  }
+  main .boxTwo #miniboxone #card1 {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+    justify-content: space-between;
+  }
+  main .boxTwo #miniboxone #card1 .boxHour {
+    text-align: center;
+    padding: 0 10px;
+  }
+  main .boxTwo #miniboxone #card1::-webkit-scrollbar {
+    display: none;
+  }
+  main .boxTwo #miniboxtwo {
+    margin-top: 20px;
+  }
+  main .boxTwo #miniboxtwo #date {
+    border: 0;
+    color: #fff;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+  }
+  main .boxTwo #miniboxtwo #date:after {
+    content: "\f073";
+  }
+  main .boxTwo #miniboxtwo #date span {
+    display: none;
+  }
+  main .boxTwo #miniboxtwo .watherOnDay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+  main .boxTwo #miniboxtwo .watherOnDay p,
+  main .boxTwo #miniboxtwo .watherOnDay i {
+    padding: 0 10px;
+  }
+}
+@media (min-width: 320px) {
+  footer {
+    padding: 0 20px;
+    background-color: aqua;
+    width: 100%;
+    height: 25px;
+  }
+  footer a {
+    border: 0;
+    color: black;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+    text-decoration: none;
+    float: right;
+  }
+  footer a:after {
+    content: "\f0c9";
+  }
+  footer a span {
+    display: none;
+  }
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Nunito Sans";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+a {
+  cursor: pointer;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*# sourceMappingURL=style.css.map */

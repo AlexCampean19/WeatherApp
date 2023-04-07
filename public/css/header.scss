@@ -1,0 +1,16 @@
+@import "mixinuri";
+@import "variabile";
+@media (min-width: 320px) {
+    header {
+        padding: 15px;
+        background-color: black;
+        #cityheader,
+        #tempheader {
+            display: inline-block;
+            @include tipografie(16px, 900, 18px, $cultexte)
+        }
+        #cityheader {
+            padding-right: 10px;
+        }
+    }
+}
