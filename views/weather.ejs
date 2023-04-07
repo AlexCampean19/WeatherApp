@@ -52,9 +52,20 @@
                 <div id="miniboxone">
                     <i id="clock"><span>Clock</span></i>
                     <p class="titlebox">HOURLY FORECAST</p>
-                    <div id="card1">
+                    <%weather.forEach(function(weather){%>
+                        <div id="card1">
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%=weather.ore%>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%=weather.gradeore%>
+                                </p>
+                                <p id="tempmax"></p>
+                            </div>
+                        </div>
+                        <%});%>
 
-                    </div>
                 </div>
                 <div id="miniboxtwo">
                     <i id="date"><span>Date</span></i>

@@ -1,55 +1,50 @@
 let express = require('express')
 let request = require('request');
-const weatherData = require('./getweather/getweatherperday');
+const sessionStorage = require('sessionstorage-for-nodejs');
+const { getWeather } = require('./WeatherApi/getWeather');
 let app = express();
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
-let city = 'Cluj-Napoca'
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&&appid=7c755906360fdde890fa9c2dcdd2e9d2&units=metric`
-app.get('/', function(req, res) {
+let city = 'Cluj-Napoca';
 
+
+let url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
+app.get('/', function(req, res, next) {
     request(url, function(error, response, body) {
 
-        weather_json = JSON.parse(body);
-        console.log(weather_json);
-        let weather = {
-            city: city,
-            temperature: Math.round(weather_json.main.temp),
-            temp_min: Math.round(weather_json.main.temp_min),
-            temp_max: Math.round(weather_json.main.temp_max),
-            description: weather_json.weather[0].description,
-        }
-        let weather_data = { weather: weather }
+        let date = JSON.parse(body)
 
-        res.render('weather', weather_data);
-    })
+        let lat = date.results[0].latitude;
+        let lon = date.results[0].longitude;
+        sessionStorage.setItem('latitude', lat);
+        sessionStorage.setItem('longitude', lon);
+        api = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto`,
+            request(api, function(err, response, body) {
+                let vreme = JSON.parse(body)
+                console.log(vreme.current_weather.temperature)
+                let weather = {
+                    city: city,
+                    temperature: Math.round(vreme.current_weather.temperature),
+                    temp_min: Math.round(vreme.daily_units.temperature_2m_min),
+                    temp_max: Math.round(vreme.daily_units.temperature_2m_max),
+                    ore: vreme.hourly.time,
+                    gradeore: vreme.hourly.temperature_2m,
+                    zile: vreme.daily.time,
+                    tempzilemax: Math.round(vreme.daily.temperature_2m_max),
+                    tempzilemin: Math.round(vreme.daily.temperature_2m_min),
 
-})
-app.get('/getweatherperday', (req, res) => {
-    weatherData((error, { day, tempmaxperday, tempminperday }) => {
-        console.log(day, tempmaxperday, tempminperday)
-        let daytemp = {
-            day,
-            tempmaxperday,
-            tempminperday
-        }
-        console.log(daytemp)
-        let day_data = { daytemp: daytemp }
-        res.render('dayweather', day_data)
+                }
+                console.log(weather)
+                let weather_data = { weather: weather }
+                res.render('weather', weather_data);
+            })
     })
 })
-app.get('/getweatherperhour', (req, res) => {
-    weatherData((error, { time, hour, temp }) => {
-        console.log(time, hour, temp)
-        let hourtemp = {
-            time,
-            hour,
-            temp
-        }
-        console.log(hourtemp)
-        let hour_data = { hourtemp: hourtemp }
-        res.render('dayweather', hour_data)
-    })
-})
+
+
+
+
+
+
 
 app.listen(8001);
