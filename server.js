@@ -1,5 +1,6 @@
 let express = require('express')
-let request = require('request')
+let request = require('request');
+const weatherData = require('./getweather/getweatherperday');
 let app = express();
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
@@ -23,10 +24,32 @@ app.get('/', function(req, res) {
         res.render('weather', weather_data);
     })
 
-
+})
+app.get('/getweatherperday', (req, res) => {
+    weatherData((error, { day, tempmaxperday, tempminperday }) => {
+        console.log(day, tempmaxperday, tempminperday)
+        let daytemp = {
+            day,
+            tempmaxperday,
+            tempminperday
+        }
+        console.log(daytemp)
+        let day_data = { daytemp: daytemp }
+        res.render('dayweather', day_data)
+    })
+})
+app.get('/getweatherperhour', (req, res) => {
+    weatherData((error, { time, hour, temp }) => {
+        console.log(time, hour, temp)
+        let hourtemp = {
+            time,
+            hour,
+            temp
+        }
+        console.log(hourtemp)
+        let hour_data = { hourtemp: hourtemp }
+        res.render('dayweather', hour_data)
+    })
 })
 
-
-
-
-app.listen(8000);
+app.listen(8001);
