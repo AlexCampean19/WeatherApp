@@ -27,23 +27,23 @@
         <div class="container">
             <div class="boxOne">
                 <h1 id="cityname">
-                    <%=weather.city%>
+                    <%= city %>
                 </h1>
                 <h2 id="citytemperature">
-                    <%= weather.temperature%>
+                    <%= temperature %>°
                 </h2>
                 <p id="status">
-                    <%=weather.description%>
+
                 </p>
                 <div id="minmax">
                     <p>H:
                         <p id="tempmax">
-                            <%=weather.temp_max%>
+                            <%= temp_max %>°
                         </p>
                     </p>
                     <p>L:
                         <p id="tempmin">
-                            <%=weather.temp_min%>
+                            <%= temp_min %>°
                         </p>
                     </p>
                 </div>
@@ -52,26 +52,147 @@
                 <div id="miniboxone">
                     <i id="clock"><span>Clock</span></i>
                     <p class="titlebox">HOURLY FORECAST</p>
-                    <%weather.forEach(function(weather){%>
-                        <div id="card1">
-                            <div class="watherOnDay">
-                                <p class="day">
-                                    <%=weather.ore%>
-                                </p><i class="cloud"><span></span></i>
-                                <p id="tempmin">
-                                    <%=weather.gradeore%>
-                                </p>
-                                <p id="tempmax"></p>
-                            </div>
-                        </div>
-                        <%});%>
+                    <div id="card1">
+                        <div class="boxHour">
 
+                            <p class="time">
+                                <%= ore[0] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%= gradeore[0] %>°</p>
+                        </div>
+                        <div class="boxHour">
+                            <p class="time">
+                                <%= ore[1] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%= gradeore[1] %>°</p>
+                        </div>
+                        <div class="boxHour">
+                            <p class="time">
+                                <%= ore[2] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%= gradeore[2] %>°</p>
+                        </div>
+                        <div class="boxHour">
+                            <p class="time">
+                                <%= ore[3] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%= gradeore[3] %>°</p>
+                        </div>
+                        <div class="boxHour">
+                            <p class="time">
+                                <%= ore[4] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%= gradeore[4] %>°</p>
+                        </div>
+                        <div class="boxHour">
+                            <p class="time">
+                                <%= ore[5] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%=gradeore[5] %>°</p>
+                        </div>
+                        <div class="boxHour">
+                            <p class="time">
+                                <%= ore[6] %>
+                            </p>
+                            <i class="cloud"><span></span></i>
+                            <p class="temponhour">
+                                <%=gradeore[6] %>°</p>
+                        </div>
+                    </div>
                 </div>
                 <div id="miniboxtwo">
                     <i id="date"><span>Date</span></i>
                     <p class="titlebox">7-DAY FORECAST</p>
                     <div id="card2">
-
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[0] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[0] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[0] %>°
+                            </p>
+                        </div>
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[1] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[1] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[1] %>°
+                            </p>
+                        </div>
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[2] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[2] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[2] %>°
+                            </p>
+                        </div>
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[3] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[3] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[3] %>°
+                            </p>
+                        </div>
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[4] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[4] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[4] %>°
+                            </p>
+                        </div>
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[5] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[5] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[5] %>°
+                            </p>
+                        </div>
+                        <div class="watherOnDay">
+                            <p class="day">
+                                <%= zile[6] %>
+                            </p><i class="cloud"><span></span></i>
+                            <p id="tempmin">
+                                <%= tempzilemin[6] %>°
+                            </p>
+                            <p id="tempmax">
+                                <%= tempzilemax[6] %>°
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
