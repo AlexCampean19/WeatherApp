@@ -1,11 +1,13 @@
 let express = require('express')
 let request = require('request');
 const bodyParser = require('body-parser')
+
 let store = require('store')
 let app = express();
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
+
 
 app.post('/', function(req, res, next) {
     let city = req.body.city;
@@ -41,8 +43,19 @@ app.post('/', function(req, res, next) {
             tempzilemax: vreme.daily.temperature_2m_max,
             tempzilemin: vreme.daily.temperature_2m_min,
         }
-
         res.render('weather', weather);
+
     })
 })
+
+
+app.get('/favorite', function(req, res) {
+    let city = {
+        city2: store.get('latitude')
+    }
+    res.render('favorite', city)
+})
+
+
+
 app.listen(8001);
