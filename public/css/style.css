@@ -22,6 +22,15 @@
   main .container {
     padding: 20px;
   }
+  main form {
+    text-align: center;
+    padding-top: 20px;
+  }
+  main input,
+  main button {
+    border-radius: 15px;
+    border: none;
+  }
   main .boxOne {
     text-align: center;
   }
@@ -116,7 +125,13 @@
   }
   main .boxTwo #miniboxone #card1 .boxHour {
     text-align: center;
-    padding: 0 10px;
+    padding: 0 22px;
+  }
+  main .boxTwo #miniboxone #card1 .time {
+    padding: 10px 0;
+  }
+  main .boxTwo #miniboxone #card1 .temponhour {
+    padding: 10px 0;
   }
   main .boxTwo #miniboxone #card1::-webkit-scrollbar {
     display: none;

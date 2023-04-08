@@ -6,6 +6,15 @@
         .container {
             padding: 20px;
         }
+        form {
+            text-align: center;
+            padding-top: 20px;
+        }
+        input,
+        button {
+            border-radius: 15px;
+            border: none;
+        }
         .boxOne {
             #tempmax {
                 padding-right: 10px;
@@ -90,7 +99,13 @@
                     justify-content: space-between;
                     .boxHour {
                         text-align: center;
-                        padding: 0 10px;
+                        padding: 0 22px;
+                    }
+                    .time {
+                        padding: 10px 0;
+                    }
+                    .temponhour {
+                        padding: 10px 0;
                     }
                 }
                 #card1::-webkit-scrollbar {
