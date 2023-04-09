@@ -16,6 +16,12 @@
   }
 }
 @media (min-width: 320px) {
+  header #addfavorite {
+    float: right;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+  }
   main {
     background-color: aqua;
   }

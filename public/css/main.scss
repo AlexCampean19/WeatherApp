@@ -1,6 +1,14 @@
 @import "mixinuri";
 @import "variabile";
 @media (min-width: 320px) {
+    header {
+        #addfavorite {
+            float: right;
+            background-color: transparent;
+            border: none;
+            color: $cultexte;
+        }
+    }
     main {
         background-color: aqua;
         .container {

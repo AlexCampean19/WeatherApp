@@ -18,364 +18,374 @@
 
 <body>
     <header>
-        <p id="cityheader">
-            <%= city %>
-        </p>
-        <p id="tempheader">
-            <%= temperature %>°</p>
-
+        <%if( weather !== null){ %>
+            <p id="cityheader">
+                <%= city %>
+            </p>
+            <p id="tempheader">
+                <%= temperature %>°
+            </p>
+            <% } %>
+                <button id="addfavorite">Add</button>
     </header>
     <main>
         <form action="/" method="post">
             <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
             <button type="submit">Get Weather</button>
         </form>
-        <div class="container">
-            <div class="boxOne">
-                <h1 id="cityname">
-                    <%= city %>
-                </h1>
-                <h2 id="citytemperature">
-                    <%= temperature %>°
-                </h2>
-                <% if(description==0) { %>
-                    <p id="status">
-                        Clear
-                    </p>
-                    <%  }%>
-                        <% if(description==1) { %>
-                            <p id="status">
-                                Mainly Clear
-                            </p>
-                            <%  }%>
-                                <% if(description==2) { %>
-                                    <p id="status">
-                                        Partly cloudy
-                                    </p>
-                                    <%  }%>
-                                        <% if(description==3) { %>
-                                            <p id="status">
-                                                Overcast
-                                            </p>
-                                            <%  }%>
-                                                <% if(description==(45,48)) { %>
-                                                    <p id="status">
-                                                        Fog
-                                                    </p>
-                                                    <%  }%>
-                                                        <% if(description==(51,53,55,56,57)) { %>
-                                                            <p id="status">
-                                                                Drizzle
-                                                            </p>
-                                                            <%  }%>
-                                                                <% if(description==(61,63,65,66,67,80,81,82)) { %>
-                                                                    <p id="status">
-                                                                        Rain
-                                                                    </p>
-                                                                    <%  }%>
-                                                                        <% if(description==(71,73,75,77,85,86)) { %>
-                                                                            <p id="status">
-                                                                                Snow
-                                                                            </p>
-                                                                            <%  }%>
-                                                                                <div id="minmax">
-                                                                                    <p>H:
-                                                                                        <p id="tempmax">
-                                                                                            <%= temp_max %>°
+        <%if( weather !== null){ %>
+            <div class="container">
+                <div class="boxOne">
+                    <h1 id="cityname">
+                        <%= city %>
+                    </h1>
+                    <h2 id="citytemperature">
+                        <%= temperature %>°
+                    </h2>
+                    <% if(description==0) { %>
+                        <p id="status">
+                            Clear
+                        </p>
+                        <%  }%>
+                            <% if(description==1) { %>
+                                <p id="status">
+                                    Mainly Clear
+                                </p>
+                                <%  }%>
+                                    <% if(description==2) { %>
+                                        <p id="status">
+                                            Partly cloudy
+                                        </p>
+                                        <%  }%>
+                                            <% if(description==3) { %>
+                                                <p id="status">
+                                                    Overcast
+                                                </p>
+                                                <%  }%>
+                                                    <% if(description==(45,48)) { %>
+                                                        <p id="status">
+                                                            Fog
+                                                        </p>
+                                                        <%  }%>
+                                                            <% if(description==(51,53,55,56,57)) { %>
+                                                                <p id="status">
+                                                                    Drizzle
+                                                                </p>
+                                                                <%  }%>
+                                                                    <% if(description==(61,63,65,66,67,80,81,82)) { %>
+                                                                        <p id="status">
+                                                                            Rain
+                                                                        </p>
+                                                                        <%  }%>
+                                                                            <% if(description==(71,73,75,77,85,86)) { %>
+                                                                                <p id="status">
+                                                                                    Snow
+                                                                                </p>
+                                                                                <%  }%>
+                                                                                    <div id="minmax">
+                                                                                        <p>H:
+                                                                                            <p id="tempmax">
+                                                                                                <%= temp_max %>°
+                                                                                            </p>
                                                                                         </p>
-                                                                                    </p>
-                                                                                    <p>L:
-                                                                                        <p id="tempmin">
-                                                                                            <%= temp_min %>°
+                                                                                        <p>L:
+                                                                                            <p id="tempmin">
+                                                                                                <%= temp_min %>°
+                                                                                            </p>
                                                                                         </p>
-                                                                                    </p>
-                                                                                </div>
-            </div>
-            <div class="boxTwo">
-                <div id="miniboxone">
-                    <i id="clock"><span>Clock</span></i>
-                    <p class="titlebox">HOURLY FORECAST</p>
-                    <div id="card1">
-                        <div class="boxHour">
+                                                                                    </div>
+                </div>
+                <div class="boxTwo">
+                    <div id="miniboxone">
+                        <i id="clock"><span>Clock</span></i>
+                        <p class="titlebox">HOURLY FORECAST</p>
+                        <div id="card1">
+                            <div class="boxHour">
 
-                            <p class="time">
-                                <%= ore[0].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%= gradeore[0] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[1].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%= gradeore[1] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[2].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%= gradeore[2] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[3].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%= gradeore[3] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[4].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%= gradeore[4] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[5].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[5] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[6].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[6] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[7].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[7] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[8].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[8] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[9].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[9] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[10].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[10] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[11].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[11] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[12].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[12] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[13].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[13] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[14].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[14] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[15].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[15] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[16].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[16] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[17].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[17] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[18].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[18] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[19].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[19] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[20].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[20] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[21].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[21] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[22].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[22] %>°</p>
-                        </div>
-                        <div class="boxHour">
-                            <p class="time">
-                                <%= ore[23].slice(-4) %>
-                            </p>
-                            <i class="cloud"><span></span></i>
-                            <p class="temponhour">
-                                <%=gradeore[23] %>°</p>
+                                <p class="time">
+                                    <%= ore[0].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%= gradeore[0] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[1].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%= gradeore[1] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[2].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%= gradeore[2] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[3].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%= gradeore[3] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[4].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%= gradeore[4] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[5].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[5] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[6].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[6] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[7].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[7] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[8].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[8] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[9].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[9] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[10].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[10] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[11].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[11] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[12].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[12] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[13].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[13] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[14].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[14] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[15].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[15] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[16].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[16] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[17].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[17] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[18].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[18] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[19].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[19] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[20].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[20] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[21].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[21] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[22].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[22] %>°</p>
+                            </div>
+                            <div class="boxHour">
+                                <p class="time">
+                                    <%= ore[23].slice(-4) %>
+                                </p>
+                                <i class="cloud"><span></span></i>
+                                <p class="temponhour">
+                                    <%=gradeore[23] %>°</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="miniboxtwo">
-                    <i id="date"><span>Date</span></i>
-                    <p class="titlebox">7-DAY FORECAST</p>
-                    <div id="card2">
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[0] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[0] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[0] %>°
-                            </p>
-                        </div>
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[1] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[1] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[1] %>°
-                            </p>
-                        </div>
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[2] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[2] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[2] %>°
-                            </p>
-                        </div>
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[3] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[3] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[3] %>°
-                            </p>
-                        </div>
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[4] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[4] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[4] %>°
-                            </p>
-                        </div>
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[5] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[5] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[5] %>°
-                            </p>
-                        </div>
-                        <div class="watherOnDay">
-                            <p class="day">
-                                <%= zile[6] %>
-                            </p><i class="cloud"><span></span></i>
-                            <p id="tempmin">
-                                <%= tempzilemin[6] %>°
-                            </p>
-                            <p id="tempmax">
-                                <%= tempzilemax[6] %>°
-                            </p>
+                    <div id="miniboxtwo">
+                        <i id="date"><span>Date</span></i>
+                        <p class="titlebox">7-DAY FORECAST</p>
+                        <div id="card2">
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[0] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[0] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[0] %>°
+                                </p>
+                            </div>
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[1] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[1] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[1] %>°
+                                </p>
+                            </div>
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[2] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[2] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[2] %>°
+                                </p>
+                            </div>
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[3] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[3] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[3] %>°
+                                </p>
+                            </div>
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[4] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[4] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[4] %>°
+                                </p>
+                            </div>
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[5] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[5] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[5] %>°
+                                </p>
+                            </div>
+                            <div class="watherOnDay">
+                                <p class="day">
+                                    <%= zile[6] %>
+                                </p><i class="cloud"><span></span></i>
+                                <p id="tempmin">
+                                    <%= tempzilemin[6] %>°
+                                </p>
+                                <p id="tempmax">
+                                    <%= tempzilemax[6] %>°
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <% } %>
+                <% if(error !== null){ %>
+                    <p>
+                        <%= error %>
+                    </p>
+                    <% } %>
     </main>
     <footer>
         <a onclick="location.href='/favorite'"><span>favorite</span></a>
