@@ -124,14 +124,17 @@
     display: none;
   }
   main .boxTwo #miniboxone #card1 {
-    display: flex;
     overflow: auto;
     white-space: nowrap;
-    justify-content: space-between;
   }
   main .boxTwo #miniboxone #card1 .boxHour {
     text-align: center;
     padding: 0 22px;
+  }
+  main .boxTwo #miniboxone #card1 .boxHour .timetemp {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   main .boxTwo #miniboxone #card1 .time {
     padding: 10px 0;
@@ -174,6 +177,11 @@
   main .boxTwo #miniboxtwo .watherOnDay p,
   main .boxTwo #miniboxtwo .watherOnDay i {
     padding: 0 10px;
+  }
+  main .boxTwo #miniboxtwo .watherOnDay .daytemp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
 @media (min-width: 320px) {

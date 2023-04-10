@@ -1,12 +1,14 @@
 let express = require('express')
 let request = require('request');
-const bodyParser = require('body-parser')
-
+let bodyParser = require('body-parser')
 let store = require('store')
 let app = express();
+
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 app.get('/', function(req, res) {
     res.render("weather", { weather: null, error: null });
 })
@@ -14,23 +16,23 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res, next) {
 
     let city = req.body.city
-    console.log(city)
+
     let url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     request(url, function(error, response, body) {
         if (error) {
             res.render('weather', { weather: null, error: 'Error, please try again' });
         } else {
             let date = JSON.parse(body)
-            console.log(date)
+
             if (date.results == undefined) {
                 res.render('weather', { weather: null, error: 'Error, please try again' });
             } else {
                 let lat = date.results[0].latitude;
                 let lon = date.results[0].longitude;
-                console.log(lat)
+
                 store.set('latitude', lat)
                 store.set('longitude', lon)
-                console.log(store.get('latitude'))
+
                 next()
             }
         }
@@ -44,8 +46,8 @@ app.post('/', function(req, res, next) {
             res.render('weather', { weather: null, error: 'Error, please try again' });
         } else {
             let vreme = JSON.parse(body)
-            console.log(vreme)
-                //console.log(vreme.current_weather.temperature)
+
+            //console.log(vreme.current_weather.temperature)
 
             res.render('weather', {
                 weather: vreme,
@@ -68,7 +70,10 @@ app.post('/', function(req, res, next) {
 })
 
 
+app.post('/add_favorite', function(req, res) {
+    console.log(req.body)
 
+})
 
 
 

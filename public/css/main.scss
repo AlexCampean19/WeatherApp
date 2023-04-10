@@ -101,13 +101,16 @@
                     }
                 }
                 #card1 {
-                    display: flex;
                     overflow: auto;
                     white-space: nowrap;
-                    justify-content: space-between;
                     .boxHour {
                         text-align: center;
                         padding: 0 22px;
+                        .timetemp {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                        }
                     }
                     .time {
                         padding: 10px 0;
@@ -150,6 +153,11 @@
                     p,
                     i {
                         padding: 0 10px;
+                    }
+                    .daytemp {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
                     }
                 }
             }
