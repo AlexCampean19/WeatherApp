@@ -31,7 +31,7 @@
                     <div class="daynight" onClick="switchMode()">
                         <div id="moon" class="moon"></div>
                       </div>
-</label>
+                 </label>
 
 
     </header>
@@ -220,6 +220,32 @@
                 moon.className = "moon";
 
             }
+        }
+        navigator.geolocation.getCurrentPosition(yourLocation);
+
+        function yourLocation(position) {
+
+            let coord = JSON.stringify({
+                lat: position.coords.latitude,
+                lon: position.coords.longitude
+            })
+            console.log(coord)
+            fetch('/', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Accept': 'application/json'
+                    },
+                    body: coord
+
+
+                })
+                .then((response) => {
+
+                    console.log(response)
+                }).catch((error) => {
+                    console.log(error)
+                })
         }
     </script>
 

@@ -10,7 +10,15 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/', function(req, res) {
+app.post('/', function(req, res, next) {
+    console.log(req.body)
+    store.set('latitude', req.body.lat)
+    store.set('longitude', req.body.lon)
+    console.log(store.get('latitude'))
+    next()
+})
+app.get('/', function(req, res, next) {
+    console.log(store.get('latitude'))
     let api = "https://api.open-meteo.com/v1/forecast?latitude=46.77&longitude=23.60&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto";
     request(api, function(error, response, body) {
         if (error) {
@@ -34,6 +42,7 @@ app.get('/', function(req, res) {
                 tempzilemin: vreme.daily.temperature_2m_min,
                 error: null
             })
+            next()
         }
 
 
@@ -43,7 +52,7 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res, next) {
 
     let city = req.body.city;
-    console.log(city)
+
     let url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     request(url, function(error, response, body) {
         if (error) {
@@ -109,13 +118,8 @@ app.post('/add_favorite', function(req, res) {
 
 app.get('/favorite', function(req, res) {
     let orasfav = store.get('favoriteCity')
-
-
     let orasadaugat = JSON.stringify(orasfav)
     let vremeoras = JSON.parse(orasadaugat)
-
-    console.log(vremeoras)
-
     console.log(vremeoras[0].oras)
     res.render('favorite', {
         vremeorase: vremeoras,
