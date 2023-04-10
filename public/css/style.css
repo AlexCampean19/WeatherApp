@@ -13,11 +13,12 @@
   }
   header #cityheader {
     padding-right: 10px;
+    text-transform: capitalize;
   }
   header .daynight {
     width: 33px;
     height: 33px;
-    left: 110px;
+    left: 160px;
     top: 16px;
     position: absolute;
   }
@@ -61,6 +62,9 @@
     text-align: center;
     padding-top: 20px;
   }
+  main input {
+    text-transform: capitalize;
+  }
   main input,
   main button {
     border-radius: 15px;
@@ -77,6 +81,7 @@
     font-weight: 600;
     line-height: 32px;
     color: #fff;
+    text-transform: capitalize;
   }
   main .boxOne #citytemperature {
     font-size: 54px;

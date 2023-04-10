@@ -11,7 +11,33 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', function(req, res) {
-    res.render("weather", { weather: null, error: null });
+    let api = "https://api.open-meteo.com/v1/forecast?latitude=46.77&longitude=23.60&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto";
+    request(api, function(error, response, body) {
+        if (error) {
+            res.render('weather', { weather: null, error: 'Error, please try again' });
+        } else {
+            let vreme = JSON.parse(body)
+
+            //console.log(vreme.current_weather.temperature)
+
+            res.render('weather', {
+                weather: vreme,
+                city: 'Cluj-Napoca',
+                temperature: vreme.current_weather.temperature,
+                description: vreme.current_weather.weathercode,
+                temp_min: vreme.daily.temperature_2m_min[0],
+                temp_max: vreme.daily.temperature_2m_max[0],
+                ore: vreme.hourly.time,
+                gradeore: vreme.hourly.temperature_2m,
+                zile: vreme.daily.time,
+                tempzilemax: vreme.daily.temperature_2m_max,
+                tempzilemin: vreme.daily.temperature_2m_min,
+                error: null
+            })
+        }
+
+
+    })
 })
 
 app.post('/', function(req, res, next) {

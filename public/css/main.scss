@@ -18,6 +18,9 @@
             text-align: center;
             padding-top: 20px;
         }
+        input {
+            text-transform: capitalize
+        }
         input,
         button {
             border-radius: 15px;
@@ -29,7 +32,8 @@
             }
             text-align: center;
             #cityname {
-                @include tipografie(26px, 600, 32px, $cultexte)
+                @include tipografie(26px, 600, 32px, $cultexte);
+                text-transform: capitalize
             }
             #citytemperature {
                 @include tipografie(54px, 900, 60px, $cultexte);
