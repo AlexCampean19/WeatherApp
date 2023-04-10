@@ -14,6 +14,35 @@
   header #cityheader {
     padding-right: 10px;
   }
+  header .daynight {
+    width: 33px;
+    height: 33px;
+    left: 110px;
+    top: 16px;
+    position: absolute;
+  }
+  header .daynight:hover {
+    cursor: pointer;
+  }
+  header .moon {
+    background-color: transparent;
+    box-shadow: -6px 1px 0 3px #275e8e;
+    border-left: 3px solid #27476D;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    margin-top: 0px;
+    transition: 2s;
+  }
+  header .sun {
+    background-color: #fdd462;
+    box-shadow: 2px 0px 0px 1px #D19C29;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    transition: 2s;
+  }
 }
 @media (min-width: 320px) {
   header #addfavorite {

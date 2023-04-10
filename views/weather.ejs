@@ -27,7 +27,11 @@
                 <%= temperature %>°</p>
             <% } %>
                 <button id="addfavorite">Add</button>
-
+                <label>
+                    <div class="daynight" onClick="switchMode()">
+                        <div id="moon" class="moon"></div>
+                      </div>
+</label>
 
 
     </header>
@@ -45,44 +49,46 @@
                     <h2 id="citytemperature">
                         <%= temperature %>°
                     </h2>
-                    <p id="status"></p>
-                    <% if(description==0) { %>
-                        Clear
-                        <%  }%>
-                            <% if(description==1) { %>
-                                Mainly Clear
-                                <%  }%>
-                                    <% if(description==2) { %>
-                                        Partly cloudy
-                                        <%  }%>
-                                            <% if(description==3) { %>
-                                                Overcast
-                                                <%  }%>
-                                                    <% if(description==(45,48)) { %>
-                                                        Fog
-                                                        <%  }%>
-                                                            <% if(description==(51,53,55,56,57)) { %>
-                                                                Drizzle
-                                                                <%  }%>
-                                                                    <% if(description==(61,63,65,66,67,80,81,82)) { %>
-                                                                        Rain
-                                                                        <%  }%>
-                                                                            <% if(description==(71,73,75,77,85,86)) { %>
-                                                                                Snow
-                                                                                <%  }%>
-                                                                                    </p>
-                                                                                    <div id="minmax">
-                                                                                        <p>H:
-                                                                                            <p id="tempmax">
-                                                                                                <%= temp_max %>°
-                                                                                            </p>
-                                                                                        </p>
-                                                                                        <p>L:
-                                                                                            <p id="tempmin">
-                                                                                                <%= temp_min %>°
-                                                                                            </p>
-                                                                                        </p>
-                                                                                    </div>
+                    <p id="status">
+                        <% if(description==0) { %>
+                            Clear
+
+                            <%  }%>
+                                <% if(description==1) { %>
+                                    Mainly Clear
+
+                                    <%  }%>
+                                        <% if(description==2) { %>
+                                            Partly cloudy
+                                            <%  }%>
+                                                <% if(description==3) { %>
+                                                    Overcast
+                                                    <%  }%>
+                                                        <% if(description==(45,48)) { %>
+                                                            Fog
+                                                            <%  }%>
+                                                                <% if(description==(51,53,55,56,57)) { %>
+                                                                    Drizzle
+                                                                    <%  }%>
+                                                                        <% if(description==(61,63,65,66,67,80,81,82)) { %>
+                                                                            Rain
+                                                                            <%  }%>
+                                                                                <% if(description==(71,73,75,77,85,86)) { %>
+                                                                                    Snow
+                                                                                    <%  }%>
+                    </p>
+                    <div id="minmax">
+                        <p>H:
+                            <p id="tempmax">
+                                <%= temp_max %>°
+                            </p>
+                        </p>
+                        <p>L:
+                            <p id="tempmin">
+                                <%= temp_min %>°
+                            </p>
+                        </p>
+                    </div>
                 </div>
                 <div class="boxTwo">
                     <div id="miniboxone">
@@ -178,7 +184,15 @@
         const butonadd = document.getElementById('addfavorite');
         butonadd.addEventListener('click', function() {
             console.log('ascultare');
-            const numeoras = document.getElementById("cityheader").textContent.trim();
+            const numeoras = JSON.stringify({
+
+                oras: document.getElementById("cityheader").textContent.trim(),
+                temp: document.getElementById('citytemperature').textContent.trim(),
+                descriere: document.getElementById('status').textContent.trim(),
+                tempmax: document.getElementById('tempmax').textContent.trim(),
+                tempmin: document.getElementById('tempmin').textContent.trim(),
+
+            })
             console.log(numeoras)
             fetch('/add_favorite', {
                     method: "POST",
@@ -186,15 +200,27 @@
                         "Content-Type": "application/json",
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify(numeoras)
+                    body: numeoras
 
                 })
                 .then((response) => {
+
                     console.log(response)
                 }).catch((error) => {
                     console.log(error)
                 })
         })
+
+        function switchMode() {
+            let moon = document.getElementById("moon");
+            if (moon.className == "moon") {
+                moon.className = "sun";
+
+            } else {
+                moon.className = "moon";
+
+            }
+        }
     </script>
 
 </body>

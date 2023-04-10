@@ -3,6 +3,7 @@ let request = require('request');
 let bodyParser = require('body-parser')
 let store = require('store')
 let app = express();
+let storage = require('node-persist')
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
@@ -15,8 +16,8 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res, next) {
 
-    let city = req.body.city
-
+    let city = req.body.city;
+    console.log(city)
     let url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     request(url, function(error, response, body) {
         if (error) {
@@ -69,19 +70,31 @@ app.post('/', function(req, res, next) {
     })
 })
 
-
+let oras = [];
 app.post('/add_favorite', function(req, res) {
-    console.log(req.body)
+
+    oras.push(req.body)
+
+    store.set('favoriteCity', oras)
 
 })
 
 
 
 app.get('/favorite', function(req, res) {
-    let city = {
-        city2: store.get('latitude')
-    }
-    res.render('favorite', city)
+    let orasfav = store.get('favoriteCity')
+
+
+    let orasadaugat = JSON.stringify(orasfav)
+    let vremeoras = JSON.parse(orasadaugat)
+
+    console.log(vremeoras)
+
+    console.log(vremeoras[0].oras)
+    res.render('favorite', {
+        vremeorase: vremeoras,
+
+    })
 })
 
 
