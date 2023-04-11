@@ -24,7 +24,7 @@
                 lat: postition.coords.latitude,
                 lon: postition.coords.longitude
             })
-            fetch('/', {
+            fetch('/getCords', {
                     method: "POST",
                     body: coord,
                     headers: {
@@ -46,18 +46,17 @@
 
 <body>
     <header>
+        <a id="yourLocation" onclick="location.href='/getCords'"><span>Your location</span></a>
         <%if( weather !== null){ %>
-            <p id="cityheader">
-                <%= city %>
-            </p>
+
             <p id="tempheader">
                 <%= temperature %>°</p>
             <% } %>
-                <label>
+
                 <div class="daynight" onClick="switchMode()">
                     <div id="moon" class="moon"></div>
-                  </div>
-             </label>
+                </div>
+
                 <a id="favoritepage" onclick="location.href='/favorite'">Favorite Page</a>
                 <a id="addfavorite"><span>Add to</span> </a>
 

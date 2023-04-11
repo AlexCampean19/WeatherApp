@@ -4,10 +4,12 @@
             .daystyle {
                 background-color: rgba(194, 147, 0, 0.5);
                 box-shadow: 2px 0px 0px 1px #D19C29;
+                color: $cultexte;
             }
             .nightstyle {
                 background-color: rgba(46, 34, 34, 0.8);
                 box-shadow: -2px 1px 0 3px #275e8e;
+                color: $cultexte;
             }
             .day {
                 background-image: url('/icons/day.jpg');
