@@ -104,6 +104,8 @@
     border-radius: 15px;
     border: none;
     padding: 5px;
+  }
+  main button {
     color: #fff;
   }
   main .boxOne {
@@ -251,7 +253,7 @@
     padding: 10px 25px;
   }
   main .boxTwo .rain:after {
-    content: "\f75c";
+    content: "\f73d";
   }
   main .boxTwo .rain span {
     display: none;

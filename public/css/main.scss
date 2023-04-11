@@ -35,6 +35,8 @@
             border-radius: 15px;
             border: none;
             padding: 5px;
+        }
+        button {
             color: $cultexte;
         }
         .boxOne {
@@ -182,7 +184,7 @@
                 width: 60px;
                 padding: 10px 25px;
                 &:after {
-                    content: "\f75c";
+                    content: "\f73d";
                 }
                 span {
                     display: none;
