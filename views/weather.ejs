@@ -15,6 +15,33 @@
     <script src="https://kit.fontawesome.com/b0f990c8c7.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>Wather App</title>
+
+    <script>
+        navigator.geolocation.getCurrentPosition(yourLocation);
+
+        function yourLocation(postition) {
+            let coord = JSON.stringify({
+                lat: postition.coords.latitude,
+                lon: postition.coords.longitude
+            })
+            fetch('/', {
+                    method: "POST",
+                    body: coord,
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Accept': 'application/json'
+                    },
+                })
+                .then((response) => {
+                    console.log(response)
+                }).catch((error) => {
+                    console.log(error)
+                })
+
+        }
+    </script>
+
+
 </head>
 
 <body>

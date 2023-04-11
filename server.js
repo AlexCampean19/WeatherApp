@@ -10,39 +10,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 
-app.get('/', function(req, res, next) {
-    let api = "https://api.open-meteo.com/v1/forecast?latitude=46.76667&longitude=23.6&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
-    request(api, function(error, response, body) {
-        if (error) {
-            res.render('weather', { weather: null, error: 'Error, please try again' });
-        } else {
-            let vreme = JSON.parse(body)
-            res.render('weather', {
-                weather: vreme,
-                city: 'Cluj-Napoca',
-                temperature: vreme.current_weather.temperature,
-                description: vreme.current_weather.weathercode,
-                temp_min: vreme.daily.temperature_2m_min[0],
-                temp_max: vreme.daily.temperature_2m_max[0],
-                ore: vreme.hourly.time,
-                descriptionore: vreme.hourly.weathercode,
-                gradeore: vreme.hourly.temperature_2m,
-                zile: vreme.daily.time,
-                descriptionday: vreme.daily.weathercode,
-                tempzilemax: vreme.daily.temperature_2m_max,
-                tempzilemin: vreme.daily.temperature_2m_min,
-                error: null,
-                suncloud: [1, 2],
-                fog: [45, 48],
-                drizzle: [51, 53, 55, 56, 57],
-                rain: [61, 63, 65, 66, 67, 80, 81, 82],
-                snow: [71, 73, 75, 77, 85, 86],
-                storm: [95, 96, 99],
-            })
-            next()
-        }
-    })
+app.get('/', function(req, res) {
+    res.render("weather", { weather: null, error: null });
 })
+
 
 app.post('/', function(req, res, next) {
     let city = req.body.city;
@@ -51,24 +22,31 @@ app.post('/', function(req, res, next) {
         if (error) {
             res.render('weather', { weather: null, error: 'Error, please try again' });
         } else {
-            console.log(req.body)
-            console.log(body)
+            lon = req.body.lon;
+            lat = req.body.lat
+            console.log(lon)
+            console.log(lat)
+            store.set('longitude', lon)
+            store.set('latitude', lat)
+
             let date = JSON.parse(body)
             if (date.results == undefined) {
                 res.render('weather', { weather: null, error: 'Error, please try again' });
             } else {
-
                 let lat = date.results[0].latitude;
                 let lon = date.results[0].longitude;
                 store.set('latitude', lat)
                 store.set('longitude', lon)
                 next()
             }
+
         }
+
     })
 })
 
 app.post('/', function(req, res, next) {
+    console.log(store.get('longitude'))
     let api = "https://api.open-meteo.com/v1/forecast?latitude=" + store.get("latitude") + "&longitude=" + store.get("longitude") + "&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
     request(api, function(error, response, body) {
         if (error) {
