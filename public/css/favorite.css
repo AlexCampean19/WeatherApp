@@ -1,22 +1,173 @@
 @media (min-width: 320px) {
+  .daystyle {
+    background-color: rgba(194, 147, 0, 0.5);
+    box-shadow: 2px 0px 0px 1px #D19C29;
+  }
+  .nightstyle {
+    background-color: rgba(46, 34, 34, 0.8);
+    box-shadow: -2px 1px 0 3px #275e8e;
+  }
+  .day {
+    background-image: url("/icons/day.jpg");
+  }
+  .night {
+    background-image: url("/icons/night.jpg");
+  }
+  .daynight {
+    width: 33px;
+    height: 33px;
+    left: 130px;
+    top: 12px;
+    position: absolute;
+  }
+  .daynight:hover {
+    cursor: pointer;
+  }
+  .moon {
+    background-color: transparent;
+    box-shadow: -6px 1px 0 3px #275e8e;
+    border-left: 3px solid #27476D;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    margin-top: 0px;
+    transition: 2s;
+  }
+  .sun {
+    background-color: #fdd462;
+    box-shadow: 2px 0px 0px 1px #D19C29;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    transition: 2s;
+  }
+  header h1 {
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+  body {
+    background-image: url("/icons/day.jpg");
+  }
   body #favoritelocation {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
   }
   body #favoritelocation .favcity {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
     width: 70%;
-    background-color: aquamarine;
+    border-radius: 25px;
   }
   body #favoritelocation .favcity .cut1,
   body #favoritelocation .favcity .cut2 {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 5px;
+  }
+  body #favoritelocation .favcity .cut1 .namecity,
+  body #favoritelocation .favcity .cut1 .statusvreme {
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+    text-transform: capitalize;
   }
   body #favoritelocation .favcity .cut2 {
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  body #favoritelocation .favcity .cut2 .tempcity {
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+  body #favoritelocation .favcity .cut2 .tempextreme {
+    display: flex;
+  }
+  body #favoritelocation .favcity .cut2 .tempextreme p {
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+  body #favoritelocation .favcity .cut2 .tempextreme .temcitymax,
+  body #favoritelocation .favcity .cut2 .tempextreme .temcitymin {
+    padding: 5px 5px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+}
+@media (min-width: 750px) {
+  header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #fff;
+  }
+  .daynight {
+    top: 18px;
+  }
+  body #favoritelocation .favcity {
+    width: 50%;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    background-image: url("/icons/daydesktop.jpg");
+  }
+  body #favoritelocation .favcity {
+    width: 40%;
+  }
+  .day {
+    background-image: url("/icons/daydesktop.jpg");
+  }
+  .night {
+    background-image: url("/icons/nightdesktop.jpg");
+  }
+}
+@media (min-width: 1200px) {
+  body #favoritelocation .favcity {
+    width: 30%;
+  }
+  body #favoritelocation .favcity .cut1 .namecity,
+  body #favoritelocation .favcity .cut1 .statusvreme {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+  body #favoritelocation .favcity .cut2 .tempcity {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+  body #favoritelocation .favcity .cut2 .tempextreme p {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
+  }
+  body #favoritelocation .favcity .cut2 .tempextreme .temcitymax,
+  body #favoritelocation .favcity .cut2 .tempextreme .temcitymin {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #fff;
   }
 }
 

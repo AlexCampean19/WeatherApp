@@ -11,39 +11,80 @@
 </head>
 
 <body>
-    <h1>Favorite city</h1>
-    <div id="favoritelocation">
-        <% for (i = 0; i < vremeorase.length; i++) { %>
-            <div class="favcity">
-                <div class="cut1">
-                    <p id="namecity">
-                        <%=  vremeorase[i].oras %>
-                    </p>
-                    <p id="timp">20:00</p>
-                    <p id="statusvreme">
-                        <%= vremeorase[i].descriere %>
-                    </p>
-                </div>
-                <div class="cut2">
-                    <p id="tempcity">
-                        <%= vremeorase[i].temp %>
-                    </p>
-                    <div class="tempextreme">
-                        <p id="temcitymax">
-                            <%=  vremeorase[0].tempmax %>
-                        </p>
-                        <p id="temcitimin">
+    <header>
+        <label>
+            <div class="daynight" onClick="switchMode()">
+                <div id="moon" class="moon"></div>
+              </div>
+         </label>
 
-                            <%=  vremeorase[0].tempmin %>
+        <h1>Favorite city</h1>
+    </header>
+    <main>
+        <div id="favoritelocation">
+            <% for (i = 0; i < vremeorase.length; i++) { %>
+                <div class="favcity">
+                    <div class="cut1">
+                        <p class="namecity">
+                            <%=  vremeorase[i].oras %>
+                        </p>
+
+                        <p class="statusvreme">
+                            <%= vremeorase[i].descriere %>
                         </p>
                     </div>
+                    <div class="cut2">
+                        <p class="tempcity">
+                            <%= vremeorase[i].temp %>
+                        </p>
+                        <div class="tempextreme">
+                            <p>H:</p>
+                            <p class="temcitymax">
+                                <%=  vremeorase[0].tempmax %>
+
+                            </p>
+                            <p>L:</p>
+                            <p class="temcitymin">
+                                <%=  vremeorase[0].tempmin %>
+                            </p>
+                        </div>
+                    </div>
+
+
                 </div>
+                <% }; %>
+
+        </div>
+    </main>
+    <script>
+        let favoras = document.querySelectorAll(".favcity")
+        favoras.forEach((element) => {
+            element.classList.add('daystyle')
+        })
 
 
-            </div>
-            <% }; %>
+        function switchMode() {
+            let moon = document.getElementById("moon");
 
-    </div>
+            if (moon.className == "moon") {
+                moon.className = "sun";
+                document.body.classList.remove('day')
+                document.body.classList.add('night')
+                favoras.forEach((element) => {
+                    element.classList.add('nightstyle')
+                    element.classList.remove("daystyle")
+                })
+            } else {
+                moon.className = "moon";
+                document.body.classList.add('day')
+                document.body.classList.remove('night')
+                favoras.forEach((element) => {
+                    element.classList.remove('nightstyle')
+                    element.classList.add("daystyle")
+                })
+            }
+        }
+    </script>
 </body>
 
 </html>

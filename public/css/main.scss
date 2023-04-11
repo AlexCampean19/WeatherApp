@@ -1,16 +1,24 @@
 @import "mixinuri";
 @import "variabile";
 @media (min-width: 320px) {
-    header {
-        #addfavorite {
-            float: right;
-            background-color: transparent;
-            border: none;
-            color: $cultexte;
-        }
+    .day {
+        background-image: url('/icons/day.jpg');
+    }
+    .night {
+        background-image: url('/icons/night.jpg');
+    }
+    body {
+        background-image: url('/icons/day.jpg');
+    }
+    .daystyle {
+        background-color: rgba(194, 147, 0, 0.5);
+        box-shadow: 2px 0px 0px 1px #D19C29;
+    }
+    .nightstyle {
+        background-color: rgba(46, 34, 34, 0.8);
+        box-shadow: -2px 1px 0 3px #275e8e;
     }
     main {
-        background-color: aqua;
         .container {
             padding: 20px;
         }
@@ -19,34 +27,62 @@
             padding-top: 20px;
         }
         input {
-            text-transform: capitalize
+            text-transform: capitalize;
+            margin-right: 10px;
         }
         input,
         button {
             border-radius: 15px;
             border: none;
+            padding: 5px;
+            color: $cultexte;
         }
         .boxOne {
+            p {
+                @include tipografie(16px,
+                700,
+                20px,
+                $cultexte)
+            }
             #tempmax {
                 padding-right: 10px;
+                @include tipografie(16px,
+                700,
+                20px,
+                $cultexte);
+                padding: 0 5px;
             }
             text-align: center;
             #cityname {
-                @include tipografie(26px, 600, 32px, $cultexte);
+                @include tipografie(26px,
+                600,
+                32px,
+                $cultexte);
                 text-transform: capitalize
             }
             #citytemperature {
-                @include tipografie(54px, 900, 60px, $cultexte);
+                @include tipografie(54px,
+                900,
+                60px,
+                $cultexte);
                 padding: 10px 0;
             }
             #status {
                 padding: 10px 0;
+                @include tipografie(16px,
+                700,
+                20px,
+                $cultexte)
             }
             #minmax {
                 display: flex;
                 justify-content: center;
                 #tempmin {
-                    padding-right: 5px;
+                    @include tipografie(16px,
+                    700,
+                    20px,
+                    $cultexte);
+                    padding: 0 5px;
                 }
             }
         }
@@ -55,11 +91,13 @@
             #miniboxtwo {
                 border-radius: 15px;
                 padding: 10px;
-                background-color: red;
             }
             .titlebox {
                 display: inline-block;
-                @include tipografie(16px, 700, 22px, $cultexte);
+                @include tipografie(16px,
+                700,
+                22px,
+                $cultexte);
                 padding-left: 10px;
             }
             .cloud {
@@ -75,8 +113,142 @@
                 font-size: 18px;
                 font-weight: 900;
                 position: relative;
+                width: 60px;
+                padding: 10px 25px;
                 &:after {
                     content: "\f0c2";
+                }
+                span {
+                    display: none;
+                }
+            }
+            .sun {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                width: 60px;
+                padding: 10px 25px;
+                &:after {
+                    content: "\f185";
+                }
+                span {
+                    display: none;
+                }
+            }
+            .suncloud {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                width: 60px;
+                padding: 10px 25px;
+                &:after {
+                    content: "\f6c4";
+                }
+                span {
+                    display: none;
+                }
+            }
+            .rain {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                width: 60px;
+                padding: 10px 25px;
+                &:after {
+                    content: "\f75c";
+                }
+                span {
+                    display: none;
+                }
+            }
+            .snow {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                width: 60px;
+                padding: 10px 25px;
+                &:after {
+                    content: "\f2dc";
+                }
+                span {
+                    display: none;
+                }
+            }
+            .fog {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                width: 60px;
+                padding: 10px 25px;
+                &:after {
+                    content: "\f75f";
+                }
+                span {
+                    display: none;
+                }
+            }
+            .furtuna {
+                border: 0;
+                color: $cultexte;
+                font-family: "Font Awesome 5 Free";
+                -webkit-font-smoothing: antialiased;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                line-height: 1;
+                font-size: 18px;
+                font-weight: 900;
+                position: relative;
+                width: 60px;
+                padding: 10px 25px;
+                &:after {
+                    content: "\f76c";
                 }
                 span {
                     display: none;
@@ -109,7 +281,7 @@
                     white-space: nowrap;
                     .boxHour {
                         text-align: center;
-                        padding: 0 22px;
+                        padding: 0 10px;
                         .timetemp {
                             display: flex;
                             flex-direction: row;
@@ -117,10 +289,20 @@
                         }
                     }
                     .time {
-                        padding: 10px 0;
+                        padding: 10px 25px;
+                        width: 60px;
+                        @include tipografie(16px,
+                        700,
+                        20px,
+                        $cultexte)
                     }
                     .temponhour {
-                        padding: 10px 0;
+                        padding: 10px 25px;
+                        width: 60px;
+                        @include tipografie(16px,
+                        700,
+                        20px,
+                        $cultexte)
                     }
                 }
                 #card1::-webkit-scrollbar {
@@ -156,7 +338,11 @@
                     padding: 10px 0;
                     p,
                     i {
-                        padding: 0 10px;
+                        padding: 10px 10px;
+                        @include tipografie(16px,
+                        700,
+                        20px,
+                        $cultexte)
                     }
                     .daytemp {
                         display: flex;
@@ -166,5 +352,53 @@
                 }
             }
         }
+    }
+}
+
+@media (min-width: 550px) {
+    .boxTwo {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+    #miniboxone,
+    #miniboxtwo {
+        width: 85%;
+    }
+}
+
+@media (min-width: 750px) {
+    .boxTwo {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+    #miniboxone,
+    #miniboxtwo {
+        width: 65%;
+    }
+}
+
+@media (min-width:1024px) {
+    body {
+        background-image: url('/icons/daydesktop.jpg');
+    }
+    .day {
+        background-image: url('/icons/daydesktop.jpg');
+    }
+    .night {
+        background-image: url('/icons/nightdesktop.jpg');
+    }
+    .boxTwo {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+    #miniboxone,
+    #miniboxtwo {
+        width: 50%;
     }
 }

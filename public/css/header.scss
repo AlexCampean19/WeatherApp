@@ -2,8 +2,15 @@
 @import "variabile";
 @media (min-width: 320px) {
     header {
+        #addfavorite {
+            float: right;
+            background-color: transparent;
+            border: none;
+            color: $cultexte;
+            @include tipografie(16px, 700, 20px, $cultexte);
+            padding: 0 5px;
+        }
         padding: 15px;
-        background-color: black;
         #cityheader,
         #tempheader {
             display: inline-block;
@@ -16,7 +23,7 @@
         .daynight {
             width: 33px;
             height: 33px;
-            left: 160px;
+            left: 180px;
             top: 16px;
             position: absolute;
         }
@@ -41,6 +48,18 @@
             width: 26px;
             height: 26px;
             transition: 2s;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    header {
+        #addfavorite {
+            @include tipografie(20px, 700, 24px, $cultexte);
+        }
+        #cityheader,
+        #tempheader {
+            @include tipografie(20px, 900, 24x, $cultexte)
         }
     }
 }

@@ -2,42 +2,40 @@ let express = require('express')
 let request = require('request');
 let bodyParser = require('body-parser')
 let store = require('store')
+let format = require('date-format')
 let app = express();
-let storage = require('node-persist')
+
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.post('/', function(req, res, next) {
-    console.log(req.body)
-    store.set('latitude', req.body.lat)
-    store.set('longitude', req.body.lon)
-    console.log(store.get('latitude'))
-    next()
-})
+
 app.get('/', function(req, res, next) {
     console.log(store.get('latitude'))
-    let api = "https://api.open-meteo.com/v1/forecast?latitude=46.77&longitude=23.60&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto";
+
+    let api = "https://api.open-meteo.com/v1/forecast?latitude=46.76667&longitude=23.6&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
     request(api, function(error, response, body) {
         if (error) {
             res.render('weather', { weather: null, error: 'Error, please try again' });
         } else {
             let vreme = JSON.parse(body)
-
-            //console.log(vreme.current_weather.temperature)
+            console.log(vreme.hourly.time)
+                //console.log(vreme.current_weather.temperature)
 
             res.render('weather', {
                 weather: vreme,
-                city: 'Cluj-Napoca',
+                city: 'Cluj_Napoca',
                 temperature: vreme.current_weather.temperature,
                 description: vreme.current_weather.weathercode,
                 temp_min: vreme.daily.temperature_2m_min[0],
                 temp_max: vreme.daily.temperature_2m_max[0],
                 ore: vreme.hourly.time,
+                descriptionore: vreme.hourly.weathercode,
                 gradeore: vreme.hourly.temperature_2m,
                 zile: vreme.daily.time,
+                descriptionday: vreme.daily.weathercode,
                 tempzilemax: vreme.daily.temperature_2m_max,
                 tempzilemin: vreme.daily.temperature_2m_min,
                 error: null
@@ -76,15 +74,12 @@ app.post('/', function(req, res, next) {
     })
 })
 app.post('/', function(req, res, next) {
-    let api = "https://api.open-meteo.com/v1/forecast?latitude=" + store.get("latitude") + "&longitude=" + store.get("longitude") + "&hourly=temperature_2m&daily=temperature_2m_max,temperature_2m_min&current_weather=true&timezone=auto";
+    let api = "https://api.open-meteo.com/v1/forecast?latitude=" + store.get("latitude") + "&longitude=" + store.get("longitude") + "&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
     request(api, function(error, response, body) {
         if (error) {
             res.render('weather', { weather: null, error: 'Error, please try again' });
         } else {
             let vreme = JSON.parse(body)
-
-            //console.log(vreme.current_weather.temperature)
-
             res.render('weather', {
                 weather: vreme,
                 city: req.body.city,
@@ -93,8 +88,10 @@ app.post('/', function(req, res, next) {
                 temp_min: vreme.daily.temperature_2m_min[0],
                 temp_max: vreme.daily.temperature_2m_max[0],
                 ore: vreme.hourly.time,
+                descriptionore: vreme.hourly.weathercode,
                 gradeore: vreme.hourly.temperature_2m,
                 zile: vreme.daily.time,
+                descriptionday: vreme.daily.weathercode,
                 tempzilemax: vreme.daily.temperature_2m_max,
                 tempzilemin: vreme.daily.temperature_2m_min,
                 error: null
