@@ -2,16 +2,35 @@
   header {
     padding: 15px;
   }
-  header #addfavorite {
-    float: right;
-    background-color: transparent;
-    border: none;
-    color: #fff;
+  header #favoritepage {
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
     color: #fff;
-    padding: 0 5px;
+    text-decoration: none;
+    float: right;
+  }
+  header #addfavorite {
+    border: 0;
+    color: #fff;
+    font-family: "Font Awesome 5 Free";
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: 900;
+    position: relative;
+    right: 15px;
+    float: right;
+  }
+  header #addfavorite:after {
+    content: "\f004";
+  }
+  header #addfavorite span {
+    display: none;
   }
   header #cityheader,
   header #tempheader {
@@ -28,9 +47,9 @@
   header .daynight {
     width: 33px;
     height: 33px;
-    left: 180px;
-    top: 16px;
-    position: absolute;
+    left: 15px;
+    float: right;
+    position: relative;
   }
   header .daynight:hover {
     cursor: pointer;
@@ -56,7 +75,8 @@
   }
 }
 @media (min-width: 1024px) {
-  header #addfavorite {
+  header #addfavorite,
+  header #favoritepage {
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
@@ -465,35 +485,6 @@
   #miniboxone,
   #miniboxtwo {
     width: 50%;
-  }
-}
-@media (min-width: 320px) {
-  footer {
-    padding: 0 20px;
-    width: 100%;
-    height: 25px;
-  }
-  footer a {
-    border: 0;
-    color: #fff;
-    font-family: "Font Awesome 5 Free";
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    font-size: 18px;
-    font-weight: 900;
-    position: relative;
-    text-decoration: none;
-    float: right;
-  }
-  footer a:after {
-    content: "\f0c9";
-  }
-  footer a span {
-    display: none;
   }
 }
 body {

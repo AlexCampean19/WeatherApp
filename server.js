@@ -1,8 +1,6 @@
 let express = require('express')
 let request = require('request');
-let bodyParser = require('body-parser')
 let store = require('store')
-let format = require('date-format')
 let app = express();
 
 
@@ -21,7 +19,7 @@ app.get('/', function(req, res, next) {
             let vreme = JSON.parse(body)
             res.render('weather', {
                 weather: vreme,
-                city: 'Cluj_Napoca',
+                city: 'Cluj-Napoca',
                 temperature: vreme.current_weather.temperature,
                 description: vreme.current_weather.weathercode,
                 temp_min: vreme.daily.temperature_2m_min[0],
@@ -53,10 +51,13 @@ app.post('/', function(req, res, next) {
         if (error) {
             res.render('weather', { weather: null, error: 'Error, please try again' });
         } else {
+            console.log(req.body)
+            console.log(body)
             let date = JSON.parse(body)
             if (date.results == undefined) {
                 res.render('weather', { weather: null, error: 'Error, please try again' });
             } else {
+
                 let lat = date.results[0].latitude;
                 let lon = date.results[0].longitude;
                 store.set('latitude', lat)

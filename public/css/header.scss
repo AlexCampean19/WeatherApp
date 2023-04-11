@@ -2,13 +2,32 @@
 @import "variabile";
 @media (min-width: 320px) {
     header {
-        #addfavorite {
-            float: right;
-            background-color: transparent;
-            border: none;
-            color: $cultexte;
+        #favoritepage {
             @include tipografie(16px, 700, 20px, $cultexte);
-            padding: 0 5px;
+            text-decoration: none;
+            float: right;
+        }
+        #addfavorite {
+            border: 0;
+            color: $cultexte;
+            font-family: "Font Awesome 5 Free";
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            font-size: 18px;
+            font-weight: 900;
+            position: relative;
+            right: 15px;
+            float: right;
+            &:after {
+                content: "\f004";
+            }
+            span {
+                display: none;
+            }
         }
         padding: 15px;
         #cityheader,
@@ -23,9 +42,9 @@
         .daynight {
             width: 33px;
             height: 33px;
-            left: 180px;
-            top: 16px;
-            position: absolute;
+            left: 15px;
+            float: right;
+            position: relative;
         }
         .daynight:hover {
             cursor: pointer;
@@ -54,7 +73,8 @@
 
 @media (min-width: 1024px) {
     header {
-        #addfavorite {
+        #addfavorite,
+        #favoritepage {
             @include tipografie(20px, 700, 24px, $cultexte);
         }
         #cityheader,

@@ -26,13 +26,13 @@
             <p id="tempheader">
                 <%= temperature %>°</p>
             <% } %>
-                <button id="addfavorite">Add</button>
                 <label>
-                    <div class="daynight" onClick="switchMode()">
-                        <div id="moon" class="moon"></div>
-                      </div>
-                 </label>
-
+                <div class="daynight" onClick="switchMode()">
+                    <div id="moon" class="moon"></div>
+                  </div>
+             </label>
+                <a id="favoritepage" onclick="location.href='/favorite'">Favorite Page</a>
+                <a id="addfavorite"><span>Add to</span> </a>
 
     </header>
     <main>
@@ -226,9 +226,7 @@
                     </p>
                     <% } %>
     </main>
-    <footer>
-        <a onclick="location.href='/favorite'"><span>favorite</span></a>
-    </footer>
+
     <script>
         const butonadd = document.getElementById('addfavorite');
         butonadd.addEventListener('click', function() {
