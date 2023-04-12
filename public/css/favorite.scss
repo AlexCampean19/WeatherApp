@@ -20,9 +20,10 @@
             .daynight {
                 width: 33px;
                 height: 33px;
-                left: 130px;
-                top: 12px;
-                position: absolute;
+                left: 5px;
+                top: 0px;
+                float: right;
+                position: relative;
             }
             .daynight:hover {
                 cursor: pointer;
@@ -49,10 +50,19 @@
             header {
                 h1 {
                     padding: 5px 5px;
+                    @include tipografie(24px,
+                    700,
+                    28px,
+                    $cultexte);
+                    text-align: center;
+                }
+                #backbutton {
+                    padding: 5px;
                     @include tipografie(16px,
                     700,
                     20px,
-                    $cultexte)
+                    $cultexte);
+                    cursor: pointer;
                 }
             }
             body {
@@ -91,7 +101,7 @@
                             align-items: flex-end;
                             .tempcity {
                                 padding: 10px 10px;
-                                @include tipografie(16px,
+                                @include tipografie(21px,
                                 700,
                                 20px,
                                 $cultexte)

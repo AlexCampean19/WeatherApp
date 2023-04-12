@@ -17,6 +17,7 @@
     <title>Wather App</title>
 
     <script>
+        // functie pentru preloarea coordonatelor pentru locatia curenta 
         navigator.geolocation.getCurrentPosition(yourLocation);
 
         function yourLocation(postition) {
@@ -57,13 +58,13 @@
                     <div id="moon" class="moon"></div>
                 </div>
 
-                <a id="favoritepage" onclick="location.href='/favorite'">Favorite Page</a>
+                <a id="favoritepage" onclick="location.href='/favorite'">Favorite</a>
                 <a id="addfavorite"><span>Add to</span> </a>
 
     </header>
     <main>
         <form action="/" method="post">
-            <input name="city" type="text" class="ghost-input" placeholder="Search for a City" required>
+            <input name="city" type="text" class="ghost-input" autocomplete="off" placeholder="Search for a City" required>
             <button type="submit" id="butoncity">Get Weather</button>
         </form>
         <%if( weather !== null){ %>
@@ -254,6 +255,8 @@
     </main>
 
     <script>
+        // functie pentru adaugarea la favorite a unui oras
+
         const butonadd = document.getElementById('addfavorite');
         butonadd.addEventListener('click', function() {
             const numeoras = JSON.stringify({
@@ -279,6 +282,8 @@
                     console.log(error)
                 })
         })
+
+        //functie pentru schimbarea temei in day sau night
         let boxone = document.querySelector('#miniboxone')
         let boxtwo = document.querySelector('#miniboxtwo')
         let input = document.querySelector('.ghost-input')

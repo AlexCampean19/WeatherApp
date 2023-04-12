@@ -2,10 +2,12 @@
   .daystyle {
     background-color: rgba(194, 147, 0, 0.5);
     box-shadow: 2px 0px 0px 1px #D19C29;
+    color: #fff;
   }
   .nightstyle {
     background-color: rgba(46, 34, 34, 0.8);
     box-shadow: -2px 1px 0 3px #275e8e;
+    color: #fff;
   }
   .day {
     background-image: url("/icons/day.jpg");
@@ -16,9 +18,10 @@
   .daynight {
     width: 33px;
     height: 33px;
-    left: 130px;
-    top: 12px;
-    position: absolute;
+    left: 5px;
+    top: 0px;
+    float: right;
+    position: relative;
   }
   .daynight:hover {
     cursor: pointer;
@@ -44,10 +47,19 @@
   }
   header h1 {
     padding: 5px 5px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28px;
+    color: #fff;
+    text-align: center;
+  }
+  header #backbutton {
+    padding: 5px;
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
     color: #fff;
+    cursor: pointer;
   }
   body {
     background-image: url("/icons/day.jpg");
@@ -87,7 +99,7 @@
   }
   body #favoritelocation .favcity .cut2 .tempcity {
     padding: 10px 10px;
-    font-size: 16px;
+    font-size: 21px;
     font-weight: 700;
     line-height: 20px;
     color: #fff;
