@@ -118,7 +118,7 @@ app.post('/', function(req, res, next) {
     })
 
 
-// functia de adaugare la favorite a unui oras
+// functia de preluare a datelor despre orasul adaugat la favorite 
 let oras = [];
 app.post('/add_favorite', function(req, res) {
     oras.push(req.body)
