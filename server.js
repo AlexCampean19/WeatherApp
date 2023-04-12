@@ -21,7 +21,7 @@ app.post(('/getCords'), function(req, res, next) {
 
 })
 app.get('/getCords', function(req, res, next) {
-    console.log(store.get('longitude'))
+
     let api = "https://api.open-meteo.com/v1/forecast?latitude=" + store.get("latitude") + "&longitude=" + store.get("longitude") + "&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
     request(api, function(error, response, body) {
         if (error) {
@@ -80,7 +80,7 @@ app.post('/', function(req, res, next) {
 })
 
 app.post('/', function(req, res, next) {
-    console.log(store.get('longitude'))
+
     let api = "https://api.open-meteo.com/v1/forecast?latitude=" + store.get("latitude") + "&longitude=" + store.get("longitude") + "&current_weather=true&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto";
     request(api, function(error, response, body) {
         if (error) {
